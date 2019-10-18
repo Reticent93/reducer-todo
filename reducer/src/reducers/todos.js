@@ -2,7 +2,7 @@
 export const initialState = {
     item: "Learn about reducers",
     completed: false,
-    id: 3892987589
+    id: Date.now()
 };
 
 
@@ -18,7 +18,7 @@ export function reducer(state, action) {
         case 'UPDATE_TODO':
         return {
             ...state, 
-            title: action.payload
+            item: action.payload
         }
         default:
             return state

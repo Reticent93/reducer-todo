@@ -10,7 +10,7 @@ const handleChange = (e) => {
     setData(e.target.value)
 }
 
-const handeEdit = e => {
+const handleEdit = e => {
     e.preventDefault();
     dispatch({type: 'TOGGLE_EDITING'})
 }
@@ -18,6 +18,7 @@ const handeEdit = e => {
 const handleSubmit = (e) => {
     e.preventDefault();
     // setData(data)
+    setData('')
     dispatch({type: 'UPDATE_TODO', payload: data || state.title})
     dispatch({type: 'TOGGLE_EDITING'})
 };
@@ -26,13 +27,13 @@ const handleSubmit = (e) => {
         <div>
             {state.editing ? (  
             <form onSubmit={handleSubmit}>
-                <input input='text' placeholder='Input To do' onChange={handleChange} />
+                <input type='text' name='setData' placeholder={state.item} value={data} onChange={handleChange} />
                 <button type='submit'>Save</button>  
             </form>
              ) : (
             <div>
-                <h1>{state.title}</h1>
-                <button onClick={handeEdit}>EDIT</button>
+                <h1>{state.item}</h1>
+                <button onClick={handleEdit}>EDIT</button>
                 </div>
             )}
         </div>
